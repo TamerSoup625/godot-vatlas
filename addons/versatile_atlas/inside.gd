@@ -53,14 +53,14 @@ func get_selected_rect():
 	return Rect2(start, end - start).abs()
 
 
-func _input(event):
+func _gui_input_fw(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
-				if not is_in_rect(get_global_mouse_position()):
-					return
-				if not is_visible_in_tree():
-					return
+#				if not is_in_rect(get_global_mouse_position()):
+#					return
+#				if not is_visible_in_tree():
+#					return
 	#			print(is_visible_in_tree())
 				selecting = true
 				start = snap(get_local_mouse_position())
@@ -69,29 +69,30 @@ func _input(event):
 		
 		if event.button_index == BUTTON_WHEEL_UP:
 			if event.is_pressed():
-				if not is_in_rect(get_global_mouse_position()):
-					return
-				if not is_visible_in_tree():
-					return
+#				if not is_in_rect(get_global_mouse_position()):
+#					return
+#				if not is_visible_in_tree():
+#					return
 				ScnRoot.move_relative(Vector2(0, SCROLL_SENS))
 		
 		if event.button_index == BUTTON_WHEEL_DOWN:
 			if event.is_pressed():
-				if not is_in_rect(get_global_mouse_position()):
-					return
-				if not is_visible_in_tree():
-					return
+#				if not is_in_rect(get_global_mouse_position()):
+#					return
+#				if not is_visible_in_tree():
+#					return
 				ScnRoot.move_relative(Vector2(0, -SCROLL_SENS))
 	
 	if event is InputEventMouseMotion:
 		if event.button_mask & BUTTON_MASK_RIGHT:
-			if not is_in_rect(get_global_mouse_position()):
-				return
-			if not is_visible_in_tree():
-				return
+#			if not is_in_rect(get_global_mouse_position()):
+#				return
+#			if not is_visible_in_tree():
+#				return
 			ScnRoot.move_relative(event.relative)
 
 
+# Unused
 func is_in_rect(point: Vector2) -> bool:
 	if not is_visible_in_tree(): return false
 	
