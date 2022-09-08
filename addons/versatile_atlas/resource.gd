@@ -102,6 +102,9 @@ func update_image():
 		if margin_color.a <= ALPHA_FIX_THERESHOLD:
 			p_image.fix_alpha_edges()
 	
+	if atlas.flags & FLAG_MIPMAPS:
+		p_image.generate_mipmaps()
+	
 	create_from_image(p_image)
 	flags = p_flags
 	update_repeat()
